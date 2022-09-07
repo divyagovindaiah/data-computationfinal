@@ -1,0 +1,301 @@
+<scoverage 
+statement-count="74" statements-invoked="43" statement-rate="58.11" branch-rate="50.00" version="1.0" timestamp="1662529364307">
+    <packages>
+        <package name="&lt;empty&gt;" statement-count="74" statements-invoked="43" statement-rate="58.11">
+            <classes>
+                <class 
+                name="telemetryMetrics" filename="TelemetryMetrics.scala" statement-count="54" statements-invoked="28" statement-rate="51.85" branch-rate="0.00">
+                    <methods>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/toFile" statement-count="7" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3436" end="3489" line="99" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3533" end="3551" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3459" end="3483" line="100" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3498" end="3524" line="102" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3533" end="3551" line="102" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3397" end="3414" line="98" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="toFile" start="3498" end="3524" line="102" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/getUniqueChannel" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getUniqueChannel" start="3187" end="3191" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getUniqueChannel" start="3141" end="3204" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getUniqueChannel" start="3186" end="3203" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getUniqueChannel" start="3161" end="3175" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getUniqueChannel" start="3193" end="3202" line="88" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/countCompleted" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="countCompleted" start="2388" end="2432" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="countCompleted" start="2406" end="2431" line="67" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/main" statement-count="15" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="894" end="1067" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="839" end="872" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="940" end="964" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="667" end="677" line="26" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="1051" end="1055" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="1016" end="1049" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="983" end="1066" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="779" end="810" line="27" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="959" end="963" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="1073" end="1102" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="1091" end="1101" line="32" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="953" end="957" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="913" end="974" line="30" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="1008" end="1056" line="31" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="main" start="658" end="678" line="26" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/lineToTelemetry" statement-count="2" statements-invoked="2" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="lineToTelemetry" start="1855" end="1865" line="54" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="lineToTelemetry" start="1871" end="1919" line="55" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/readFile" statement-count="9" statements-invoked="9" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1442" end="1473" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1509" end="1543" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1371" end="1402" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1327" end="1404" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1525" end="1542" line="44" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1480" end="1578" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1561" end="1570" line="45" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1347" end="1403" line="41" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="readFile" start="1423" end="1474" line="42" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/&lt;none&gt;" statement-count="4" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="&lt;none&gt;" start="429" end="462" line="21" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="&lt;none&gt;" start="547" end="606" line="23" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="&lt;none&gt;" start="393" end="403" line="20" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="&lt;none&gt;" start="483" end="526" line="22" branch="false" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/telemetryMetrics/getContentProgress" statement-count="10" statements-invoked="10" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2827" end="2866" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2790" end="2806" line="77" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2856" end="2859" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2835" end="2866" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2706" end="2741" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2850" end="2854" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2827" end="2831" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2861" end="2865" line="78" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2762" end="2873" line="77" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="telemetryMetrics" class-type="Object" full-class-name="telemetryMetrics" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala" method="getContentProgress" start="2726" end="2740" line="76" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+                <class 
+                name="TelemetryStructure" filename="TelemetryStructure.scala" statement-count="20" statements-invoked="15" statement-rate="75.00" branch-rate="66.67">
+                    <methods>
+                        <method 
+                        name="&lt;empty&gt;/TelemetryStructure/getProgress" statement-count="13" statements-invoked="13" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="330" end="330" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="440" end="465" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="477" end="508" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="436" end="436" line="19" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="436" end="436" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="401" end="516" line="18" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="334" end="391" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="482" end="508" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="482" end="499" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="330" end="330" line="17" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="477" end="508" line="20" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="322" end="325" line="16" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getProgress" start="401" end="516" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/TelemetryStructure/getContentId" statement-count="5" statements-invoked="0" statement-rate="0.00" branch-rate="0.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getContentId" start="617" end="628" line="28" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getContentId" start="638" end="644" line="29" branch="true" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getContentId" start="638" end="644" line="29" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getContentId" start="573" end="609" line="27" branch="false" invocation-count="0" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getContentId" start="617" end="628" line="28" branch="true" invocation-count="0" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/TelemetryStructure/getChannelId" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getChannelId" start="265" end="280" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/TelemetryStructure/getUserId" statement-count="1" statements-invoked="1" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="TelemetryStructure" class-type="Class" full-class-name="TelemetryStructure" source="/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala" method="getUserId" start="227" end="235" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

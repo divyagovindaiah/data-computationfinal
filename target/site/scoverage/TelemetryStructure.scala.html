@@ -1,0 +1,610 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          TelemetryStructure.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>import java.util.HashMap
+</span>2 <span style=''>import java.util.List
+</span>3 <span style=''>
+</span>4 <span style=''>case class TelemetryStructure(
+</span>5 <span style=''>  eid: String,
+</span>6 <span style=''>  progress:ProgressData,
+</span>7 <span style=''>  context: ContextDetails,
+</span>8 <span style=''>  edata: EData,
+</span>9 <span style=''>  actor: Actor,
+</span>10 <span style=''>  `object`: ObjectDetails) {
+</span>11 <span style=''>
+</span>12 <span style=''>
+</span>13 <span style=''>  def getUserId = </span><span style='background: #AEF1AE'>actor.id</span><span style=''>
+</span>14 <span style=''>  def getChannelId: String = </span><span style='background: #AEF1AE'>context.channel</span><span style=''>
+</span>15 <span style=''>  def getProgress:Double = {
+</span>16 <span style=''>    var c = </span><span style='background: #AEF1AE'>0.0</span><span style=''>
+</span>17 <span style=''>    if (</span><span style='background: #AEF1AE'>edata.summary.isInstanceOf[List[HashMap[String, String]]]</span><span style=''>) {
+</span>18 <span style=''>      </span><span style='background: #AEF1AE'>edata.summary.forEach(x =&gt;
+</span>19 <span style=''></span><span style='background: #AEF1AE'>        if (x.containsKey(&quot;progress&quot;))
+</span>20 <span style=''></span><span style='background: #AEF1AE'>          c += x.get(&quot;progress&quot;).toDouble
+</span>21 <span style=''></span><span style='background: #AEF1AE'>      )</span><span style=''>
+</span>22 <span style=''>    }
+</span>23 <span style=''>    c
+</span>24 <span style=''>  }
+</span>25 <span style=''>
+</span>26 <span style=''>  def getContentId: String = {
+</span>27 <span style=''>    if (</span><span style='background: #F0ADAD'>`object`.isInstanceOf[ObjectDetails]</span><span style=''>)
+</span>28 <span style=''>      </span><span style='background: #F0ADAD'>`object`.id</span><span style=''>
+</span>29 <span style=''>    else </span><span style='background: #F0ADAD'>&quot;None&quot;</span><span style=''>
+</span>30 <span style=''>  }
+</span>31 <span style=''>}
+</span>32 <span style=''>
+</span>33 <span style=''>case class ContextDetails(
+</span>34 <span style=''>  sid: String,
+</span>35 <span style=''>  did: String,
+</span>36 <span style=''>  pdata: PData,
+</span>37 <span style=''>  channel: String
+</span>38 <span style=''>)
+</span>39 <span style=''>
+</span>40 <span style=''>case class ProgressData(
+</span>41 <span style=''>  userId: String,
+</span>42 <span style=''>  completed: Int
+</span>43 <span style=''>)
+</span>44 <span style=''>
+</span>45 <span style=''>case class Actor(
+</span>46 <span style=''>  `type`: String,
+</span>47 <span style=''>  id: String
+</span>48 <span style=''>)
+</span>49 <span style=''>
+</span>50 <span style=''>case class PData(
+</span>51 <span style=''>  id: String,
+</span>52 <span style=''>  pid: String,
+</span>53 <span style=''>  ver: String
+</span>54 <span style=''>)
+</span>55 <span style=''>
+</span>56 <span style=''>case class EData(
+</span>57 <span style=''>  state: String,
+</span>58 <span style=''>  props: List[String],
+</span>59 <span style=''>  summary: List[HashMap[String,String]]
+</span>60 <span style=''>)
+</span>61 <span style=''>
+</span>62 <span style=''>case class Rollup(
+</span>63 <span style=''>  l1: String,
+</span>64 <span style=''>  l2: String
+</span>65 <span style=''>)
+</span>66 <span style=''>
+</span>67 <span style=''>case class ObjectDetails(
+</span>68 <span style=''>  id: String,
+</span>69 <span style=''>  `type`: String,
+</span>70 <span style=''>  rollup: Rollup
+</span>71 <span style=''>)
+</span>72 <span style=''>
+</span>73 <span style=''>case class channel(
+</span>74 <span style=''>  id: String,
+</span>75 <span style=''>  count: Int
+</span>76 <span style=''>)
+</span>77 <span style=''>
+</span>78 <span style=''>case class OutputData(
+</span>79 <span style=''>  inProgressContent: Array[ProgressData],
+</span>80 <span style=''>  uniqueChannel: Array[channel]
+</span>81 <span style=''>
+</span>82 <span style=''>)
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Tests</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          55
+        </td>
+        <td>
+          227
+          -
+          235
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Actor.id
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          TelemetryStructure.this.actor.id
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          56
+        </td>
+        <td>
+          265
+          -
+          280
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          ContextDetails.channel
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          TelemetryStructure.this.context.channel
+        </td>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          57
+        </td>
+        <td>
+          322
+          -
+          325
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          68
+        </td>
+        <td>
+          330
+          -
+          330
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          58
+        </td>
+        <td>
+          334
+          -
+          391
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.Any.isInstanceOf
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          TelemetryStructure.this.edata.summary.isInstanceOf[java.util.List[java.util.HashMap[String,String]]]
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          69
+        </td>
+        <td>
+          330
+          -
+          330
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          67
+        </td>
+        <td>
+          401
+          -
+          516
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          java.lang.Iterable.forEach
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          TelemetryStructure.this.edata.summary.forEach(((x: java.util.HashMap[String,String]) =&gt; if (x.containsKey(&quot;progress&quot;))
+  c = c.+(scala.Predef.augmentString(x.get(&quot;progress&quot;)).toDouble)
+else
+  ()))
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          66
+        </td>
+        <td>
+          401
+          -
+          516
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.lang.Iterable.forEach
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          TelemetryStructure.this.edata.summary.forEach(((x: java.util.HashMap[String,String]) =&gt; if (x.containsKey(&quot;progress&quot;))
+  c = c.+(scala.Predef.augmentString(x.get(&quot;progress&quot;)).toDouble)
+else
+  ()))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          440
+          -
+          465
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.HashMap.containsKey
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          x.containsKey(&quot;progress&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          65
+        </td>
+        <td>
+          436
+          -
+          436
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          64
+        </td>
+        <td>
+          436
+          -
+          436
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          ()
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          62
+        </td>
+        <td>
+          477
+          -
+          508
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          c.+(scala.Predef.augmentString(x.get(&quot;progress&quot;)).toDouble)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          482
+          -
+          508
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.StringOps.toDouble
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Predef.augmentString(x.get(&quot;progress&quot;)).toDouble
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          60
+        </td>
+        <td>
+          482
+          -
+          499
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.HashMap.get
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          x.get(&quot;progress&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          63
+        </td>
+        <td>
+          477
+          -
+          508
+        </td>
+        <td>
+          Assign
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          c = c.+(scala.Predef.augmentString(x.get(&quot;progress&quot;)).toDouble)
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          70
+        </td>
+        <td>
+          573
+          -
+          609
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          scala.Any.isInstanceOf
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #F0ADAD">
+          TelemetryStructure.this.`object`.isInstanceOf[ObjectDetails]
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          71
+        </td>
+        <td>
+          617
+          -
+          628
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          ObjectDetails.id
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #F0ADAD">
+          TelemetryStructure.this.`object`.id
+        </td>
+      </tr><tr>
+        <td>
+          28
+        </td>
+        <td>
+          72
+        </td>
+        <td>
+          617
+          -
+          628
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          ObjectDetails.id
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #F0ADAD">
+          TelemetryStructure.this.`object`.id
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          74
+        </td>
+        <td>
+          638
+          -
+          644
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;None&quot;
+        </td>
+      </tr><tr>
+        <td>
+          29
+        </td>
+        <td>
+          73
+        </td>
+        <td>
+          638
+          -
+          644
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #F0ADAD">
+          &quot;None&quot;
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>
