@@ -12,13 +12,14 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.13.8" level="application" />
+    <orderEntry type="library" name="scalatest.scalatest_2.11" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.5" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.typesafe:config:1.4.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.scala-lang:scala-library:2.13.8" level="project" />
     <orderEntry type="library" name="Maven: org.scalactic:scalactic_2.13:3.2.13" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.13.6" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.13.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest_2.13:3.2.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest-core_2.13:3.2.13" level="project" />
@@ -36,6 +37,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest-matchers-core_2.13:3.2.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest-shouldmatchers_2.13:3.2.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest-mustmatchers_2.13:3.2.13" level="project" />
-    <orderEntry type="library" name="scalatest.scalatest_2.11" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.13.8" level="project" />
   </component>
 </module>

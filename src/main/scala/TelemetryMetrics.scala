@@ -21,36 +21,39 @@ object telemetryMetrics extends App {
   val applicationConf = ConfigFactory.load("config.conf")
   val sourceFile = applicationConf.getString("app.sourceFile")
   val outputFile = applicationConf.getString("app.output.totalContentOutFile")
-  val metricsOutFile = applicationConf.getString("app.output.metricsOutFile")
+
+  def main(): Unit = {
+    val telemetryData = readFile(sourceFile)                                                                          
+    val distnctchannel = getUniqueChannel(telemetryData)
+    val contentcompleted = getContentProgress(telemetryData)
+    val finalData = OutputData(
+      contentcompleted.map(r => (ProgressData(r._1, r._2))).toArray,
+      distnctchannel.map(r => (channel(Option(r._1).getOrElse("Unknown"), r._2))).toArray)
+    toFile(finalData, outputFile)
+  }
+
 
   /**
    * Loading Gzip file convert into buffer reader then in the form of list
    * @return: returns list of strings
    */
-  def readFile(sourceFile: String): BufferedReader = {
+  def readFile(sourceFile: String): List[TelemetryStructure] = {
     val gzipData = new GZIPInputStream(new BufferedInputStream(new FileInputStream(sourceFile)))
     val reader = new BufferedReader(new InputStreamReader(gzipData))
-    reader
+    Iterator.continually(
+      lineToTelemetry(reader.readLine())
+    ).takeWhile(_ != null).toList
   }
- /**
-  * Takes in line from stream data in BufferedReader and returns the json parsed class object
-  * @param line: Json object line from file stream
-  * @return TelemetryData
-  */
+
+  /**
+   * Takes in line from stream data in BufferedReader and returns the json parsed class object
+   * @param line : Json object line from file stream
+   * @return TelemetryData
+   */
   def lineToTelemetry(line: String): TelemetryStructure = {
     val gson = new Gson()
     gson.fromJson(line, classOf[TelemetryStructure])
   }
-
-  /**
-   * Takes in stream data in BufferedReader and returns the list of objects in the stream
-   * @param reader: BufferedReader which has all the data of file
-   * @return Iterator[TelemetryStructure]
-  */
-  def process(reader: BufferedReader): List[TelemetryStructure] =
-    Iterator.continually(
-      lineToTelemetry(reader.readLine())
-    ).takeWhile(_ != null).toList
 
   /**
    * This function can check the progress of content is 100.0 or not
@@ -61,18 +64,7 @@ object telemetryMetrics extends App {
    * @return: returns count of completed content by a user
    */
   def countCompleted(result: List[TelemetryStructure], progress: Double, userId: String): Int =
-    result.count(x =>
-      x.getProgress == progress &&
-        x.getUserId == userId)
-
-  /**
-   * This function can  count the number of distcint channel
-   * @channel : get the count of chaneelId
-   */
-
-  def distinctChannels(result1: List[TelemetryStructure], channel: String): Int = {
-    result1.count(x => x.getChannelId == channel)
-  }
+    result.count(x => x.getProgress == progress)
 
   /**
    * it can  group the content those are the progress 100.0
@@ -80,67 +72,40 @@ object telemetryMetrics extends App {
    * @return: count the number of completed contents
    */
 
-  def getContentProgress(result: List[TelemetryStructure]): Map[String, Int] = {
-    result.groupBy(record => (record.getUserId)).map {
-      case (userId, logObjects) => userId ->
-        countCompleted(logObjects, 100.0, userId)
+  def getContentProgress(result: List[TelemetryStructure]) = {
+    val seperate = result.filter (x => x.eid == "END")
+    val finalRes = seperate.groupBy(record => (record.getUserId)).map { f =>
+      f._1 -> countCompleted(f._2, 100, f._1)
     }
-
-  }
-
+finalRes
+}
   /**
    * it can group the channalls are distinct
-   * @param result: contains List of telemetry objects
+   * @param result : contains List of telemetry objects
    * @return: find out the number of disctinctchannnel
    */
-
-  def getUniqueChannel(result: List[TelemetryStructure]): Map[String, Int] = {
+  def getUniqueChannel(result: List[TelemetryStructure]) = {
     val metrics = result.groupBy(f => f.getChannelId).map(f => (f._1, f._2.size))
-    metrics
-  }
 
+metrics
+}
   /**
    * it can writes the output to a file
-   *@param data : it can takes outputdata
+   * @param data : it can takes outputdata
    */
 
-  def toFile(data: OutputData) = {
-    val jsonData = gson.toJson(data)
-    val fileWriter = new PrintWriter(
-      new File(outputFile)
-    )
-    try fileWriter.write(jsonData) finally fileWriter.close()
+ def toFile(data:OutputData, outputFilePath: String) = {
+   val jsonData = gson.toJson(data)
+   val fileWriter = new PrintWriter(
+     new File(outputFilePath)
+   )
+   try fileWriter.write(jsonData) finally fileWriter.close()
+ }
+
+main()
+
+
   }
 
-  /**
-   *This function is used to write the obtained metrics to a new json file
-   *@param data it can takes outputData1
-   */
-
-  def toFile1(data: OutputData1) = {
-    val jsonData = gson.toJson(data)
-    val fileWriter = new PrintWriter(
-      new File(metricsOutFile)
-
-    )
-    try fileWriter.write(jsonData) finally fileWriter.close()
-  }
-
-  val readData = readFile("/home/sanctum/Downloads/project.json.gz")
-  val telemetryData = process(readData)
-  val completedContent = getContentProgress(telemetryData)
-  val distinctChannels = getUniqueChannel(telemetryData)
-  val finalData = new OutputData(
-    completedContent.map(
-      r => new ProgressData(r._1, r._2).asInstanceOf[ProgressData]
-    ).toList.toArray)
-  toFile(finalData)
-  distinctChannels.map(f => println("data", f))
-  val finalData1 = new OutputData1(
-    distinctChannels.map(
-      r =>  new channel(r._1,r._2).asInstanceOf[channel]
-    ).toArray)
-  toFile1(finalData1)
-}
 
 
