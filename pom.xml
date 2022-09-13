@@ -15,6 +15,8 @@
         <scoverage.scalacPluginVersion>1.4.11</scoverage.scalacPluginVersion>
         <scoverage.aggregate>true</scoverage.aggregate>
         <scoverage.aggregateOnly>true</scoverage.aggregateOnly>
+        <spark.maj.version>2.4</spark.maj.version>
+        <spark.version>2.4.4</spark.version>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
@@ -34,11 +36,11 @@
             <version>1.4.1</version>
         </dependency>
         <dependency>
-        <groupId>org.scala-lang</groupId>
-        <artifactId>scala-library</artifactId>
-        <version>2.13.8</version>
-        <scope>provided</scope>
-    </dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.13.8</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.scalactic</groupId>
             <artifactId>scalactic_2.13</artifactId>
@@ -58,35 +60,6 @@
             <url>https://repo.artima.com/releases</url>
         </repository>
     </repositories>
-<!--    <build>-->
-<!--        <sourceDirectory>src/main/scala</sourceDirectory>-->
-<!--        <testSourceDirectory>src/test/scala</testSourceDirectory>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>net.alchim31.maven</groupId>-->
-<!--                <artifactId>scala-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <compilerPlugins>-->
-<!--                        <compilerPlugin>-->
-<!--                            <groupId>com.artima.supersafe</groupId>-->
-<!--                            <artifactId>supersafe_2.13.8</artifactId>-->
-<!--                            <version>1.1.13</version>-->
-<!--                        </compilerPlugin>-->
-<!--                    </compilerPlugins>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.scoverage</groupId>-->
-<!--                    <artifactId>scoverage-maven-plugin</artifactId>-->
-<!--                    <version>${scoverage.plugin.version}</version>&lt;!&ndash;$NO-MVN-MAN-VER$&ndash;&gt;-->
-<!--                    <configuration>-->
-<!--                        <scalaVersion>${scala.version}</scalaVersion>-->
-<!--                        <aggregate>true</aggregate>-->
-<!--                        <highlighting>true</highlighting>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
 
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
@@ -145,24 +118,24 @@
                     <highlighting>true</highlighting>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>2.3</version>-->
-<!--                <configuration>-->
-<!--                    <descriptors>-->
-<!--                        <descriptor>src/main/assembly/src.xml</descriptor>-->
-<!--                    </descriptors>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <artifactId>maven-assembly-plugin</artifactId>-->
+            <!--                <version>2.3</version>-->
+            <!--                <configuration>-->
+            <!--                    <descriptors>-->
+            <!--                        <descriptor>src/main/assembly/src.xml</descriptor>-->
+            <!--                    </descriptors>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>make-assembly</id>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>single</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

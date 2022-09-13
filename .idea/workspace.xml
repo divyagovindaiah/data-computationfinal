@@ -4,24 +4,77 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41e77ff9-5d83-4f37-8a92-775351fc1971" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_13_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/arrowDown.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/arrowUp.gif" afterDir="false" />
+    <list default="true" id="41e77ff9-5d83-4f37-8a92-775351fc1971" name="Changes" comment="hw">
+      <change afterPath="$PROJECT_DIR$/data-computation12.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_scala_lang_scala_library_2_13_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data - Computation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Data - Computation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.md" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.conf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/TelemetryMetrics.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/TelemetryMetrics.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/TelemetryStructure.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/TelemetryStructure.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/TelemetryMetricsTest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/TelemetryMetricsTest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Actor$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Actor$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ContextDetails$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ContextDetails$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ContextDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ContextDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/EData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/EData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectDetails$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ObjectDetails$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ObjectDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ObjectDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/OutputData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/OutputData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/OutputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/OutputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ProgressData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ProgressData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ProgressData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ProgressData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Rollup$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Rollup$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Rollup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Rollup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TelemetryStructure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TelemetryStructure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/channel$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/channel$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/channel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/channel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/telemetryMetrics$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/telemetryMetrics$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/telemetryMetrics$delayedInit$body.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/telemetryMetrics$delayedInit$body.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/telemetryMetrics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/telemetryMetrics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cobertura.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/cobertura.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/data-computation12-1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/data-computation12-1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-data-computation12-1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-data-computation12-1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/Actor$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/Actor$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/Actor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/Actor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ContextDetails$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ContextDetails$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ContextDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ContextDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/EData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/EData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/EData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/EData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ObjectDetails$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ObjectDetails$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ObjectDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ObjectDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/OutputData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/OutputData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/OutputData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/OutputData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/PData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/PData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/PData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/PData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ProgressData$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ProgressData$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/ProgressData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/ProgressData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/Rollup$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/Rollup$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/Rollup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/Rollup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/TelemetryStructure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/TelemetryStructure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/channel$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/channel$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/channel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/channel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/config.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics$.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics$.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics$delayedInit$body.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics$delayedInit$body.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-classes/telemetryMetrics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-data/scoverage.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage-data/scoverage.coverage" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage-data/scoverage.measurements.249f7340-2d2c-46d1-8467-edc584ac2248.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/scoverage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/scoverage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/scoverage/(empty).html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/scoverage/(empty).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/scoverage/TelemetryMetrics.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/scoverage/TelemetryMetrics.scala.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/scoverage/TelemetryStructure.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/scoverage/TelemetryStructure.scala.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/scoverage/overview.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/scoverage/overview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/scoverage/packages.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/scoverage/packages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/TelemetryMetricsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TelemetryMetricsTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +93,16 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -62,11 +125,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/sanctum/Downloads",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "/home/sanctum/IdeaProjects/data-computation12/pom.xml",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings"
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -77,109 +140,15 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Testing" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Testing" />
-      <module name="Data - Computation" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="ScalaTest.telemetryMetrics">
     <configuration default="true" type="Application" factoryName="Application">
       <module name="Data - Computation" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="telemetryMetrics" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="telemetryMetrics" />
-      <module name="Data - Computation" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Data - Computation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Data - Computation" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TelemetryMetricsTest" type="ScalaTestRunConfiguration" factoryName="ScalaTest" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="Data - Computation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TelemetryMetricsTest" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="TelemetryStructure" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="telemetryMetrics" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="*" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="*" />
-          <option name="ENABLED" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="Rollup" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ProgressData" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="PData" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="OutputData" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ObjectDetails" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="EData" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ContextDetails" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="Actor" />
-          <option name="ENABLED" value="true" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="channel" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="OutputData$" />
-          <option name="ENABLED" value="false" />
-          <option name="INCLUDE" value="false" />
-        </pattern>
-      </extension>
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
@@ -192,22 +161,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TelemetryMetricsTest.should TelemetryMetrics.telemetryObjects" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="Data - Computation" />
+    <configuration name="TelemetryMetricsTest.should check file exist" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="data-computation12" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
       <option name="testKind" value="Test name" />
+      <option name="shortenClasspath" value="NONE" />
       <option name="testClassPath" value="TelemetryMetricsTest" />
-      <option name="testName" value="should TelemetryMetrics.telemetryObjects" />
+      <option name="testName" value="should check file exist" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TelemetryMetricsTest.should return the total content progress" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="Data - Computation" />
+    <configuration name="TelemetryMetricsTest.should check file" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="data-computation12" />
       <option name="allowRunningInParallel" value="false" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
@@ -215,7 +185,49 @@
       </option>
       <option name="testKind" value="Test name" />
       <option name="testClassPath" value="TelemetryMetricsTest" />
-      <option name="testName" value="should return the total content progress" />
+      <option name="testName" value="should check file" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelemetryMetricsTest.should details of progressData, channle" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="data-computation12" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="TelemetryMetricsTest" />
+      <option name="testName" value="should details of progressData, channle" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelemetryMetricsTest.should to check output return" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="data-computation12" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="TelemetryMetricsTest" />
+      <option name="testName" value="should to check output return" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelemetryMetricsTest.should writes output to a file" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="data-computation12" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Test name" />
+      <option name="testClassPath" value="TelemetryMetricsTest" />
+      <option name="testName" value="should writes output to a file" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,21 +246,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.telemetryMetrics" />
-      <item itemvalue="Application.Testing" />
-      <item itemvalue="JUnit.All in Data - Computation" />
       <item itemvalue="ScalaTest.telemetryMetrics" />
       <item itemvalue="ScalaTest.TelemetryMetricsTest" />
-      <item itemvalue="ScalaTest.TelemetryMetricsTest.should return the total content progress" />
-      <item itemvalue="ScalaTest.TelemetryMetricsTest.should TelemetryMetrics.telemetryObjects" />
+      <item itemvalue="ScalaTest.TelemetryMetricsTest.should check file" />
+      <item itemvalue="ScalaTest.TelemetryMetricsTest.should details of progressData, channle" />
+      <item itemvalue="ScalaTest.TelemetryMetricsTest.should to check output return" />
+      <item itemvalue="ScalaTest.TelemetryMetricsTest.should writes output to a file" />
+      <item itemvalue="ScalaTest.TelemetryMetricsTest.should check file exist" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="ScalaTest.TelemetryMetricsTest.should return the total content progress" />
-        <item itemvalue="JUnit.All in Data - Computation" />
-        <item itemvalue="Application.telemetryMetrics" />
-        <item itemvalue="Application.Testing" />
-        <item itemvalue="ScalaTest.TelemetryMetricsTest.should TelemetryMetrics.telemetryObjects" />
+        <item itemvalue="ScalaTest.TelemetryMetricsTest.should details of progressData, channle" />
+        <item itemvalue="ScalaTest.TelemetryMetricsTest.should to check output return" />
+        <item itemvalue="ScalaTest.TelemetryMetricsTest.should writes output to a file" />
+        <item itemvalue="ScalaTest.TelemetryMetricsTest.should check file" />
+        <item itemvalue="ScalaTest.TelemetryMetricsTest.should check file exist" />
       </list>
     </recent_temporary>
   </component>
@@ -261,6 +273,21 @@
       <option name="presentableId" value="Default" />
       <updated>1659677001248</updated>
     </task>
+    <task id="LOCAL-00001" summary="hw">
+      <created>1662531074105</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662531074105</updated>
+    </task>
+    <task id="LOCAL-00002" summary="hw">
+      <created>1662531102903</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662531102903</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,6 +303,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="hw" />
+    <option name="LAST_COMMIT_MESSAGE" value="hw" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

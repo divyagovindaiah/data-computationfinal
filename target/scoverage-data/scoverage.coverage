@@ -25,9 +25,9 @@ telemetryMetrics
 Object
 telemetryMetrics
 <none>
-393
-403
-20
+391
+401
+19
 com.google.gson.Gson.<init>
 Apply
 false
@@ -41,16 +41,16 @@ new com.google.gson.Gson()
 telemetryMetrics
 Object
 telemetryMetrics
-<none>
-429
-462
-21
+main
+476
+514
+23
 com.typesafe.config.ConfigFactory.load
 Apply
 false
 0
-false
-com.typesafe.config.ConfigFactory.load("config.conf")
+true
+com.typesafe.config.ConfigFactory.load("application.conf")
 
 3
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -58,16 +58,16 @@ com.typesafe.config.ConfigFactory.load("config.conf")
 telemetryMetrics
 Object
 telemetryMetrics
-<none>
-483
-526
-22
+main
+537
+580
+24
 com.typesafe.config.Config.getString
 Apply
 false
 0
-false
-telemetryMetrics.this.applicationConf.getString("app.sourceFile")
+true
+applicationConf.getString("app.sourceFile")
 
 4
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -75,16 +75,16 @@ telemetryMetrics.this.applicationConf.getString("app.sourceFile")
 telemetryMetrics
 Object
 telemetryMetrics
-<none>
-547
-606
-23
+main
+603
+662
+25
 com.typesafe.config.Config.getString
 Apply
 false
 0
-false
-telemetryMetrics.this.applicationConf.getString("app.output.totalContentOutFile")
+true
+applicationConf.getString("app.output.totalContentOutFile")
 
 5
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -93,15 +93,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 main
-667
-677
+679
+709
 26
-telemetryMetrics.sourceFile
-Select
+telemetryMetrics.process
+Apply
 false
 0
-false
-telemetryMetrics.this.sourceFile
+true
+telemetryMetrics.this.process(sourceFile, outputFile)
 
 6
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -110,15 +110,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 main
-658
-678
-26
-telemetryMetrics.readFile
+715
+738
+27
+telemetryMetrics.toFile
 Apply
 false
 0
-false
-telemetryMetrics.this.readFile(telemetryMetrics.this.sourceFile)
+true
+telemetryMetrics.this.toFile(data, outputFile)
 
 7
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -126,16 +126,16 @@ telemetryMetrics.this.readFile(telemetryMetrics.this.sourceFile)
 telemetryMetrics
 Object
 telemetryMetrics
-main
-779
-810
-27
-telemetryMetrics.getUniqueChannel
+process
+862
+882
+32
+telemetryMetrics.readFile
 Apply
 false
 0
 false
-telemetryMetrics.this.getUniqueChannel(telemetryData)
+telemetryMetrics.this.readFile(sourcefile)
 
 8
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -143,16 +143,16 @@ telemetryMetrics.this.getUniqueChannel(telemetryData)
 telemetryMetrics
 Object
 telemetryMetrics
-main
-839
-872
-28
-telemetryMetrics.getContentProgress
+process
+909
+940
+33
+telemetryMetrics.getUniqueChannel
 Apply
 false
 0
 false
-telemetryMetrics.this.getContentProgress(telemetryData)
+telemetryMetrics.this.getUniqueChannel(telemetryData)
 
 9
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -160,16 +160,16 @@ telemetryMetrics.this.getContentProgress(telemetryData)
 telemetryMetrics
 Object
 telemetryMetrics
-main
-953
-957
-30
-scala.Tuple2._1
-Select
+process
+969
+1002
+34
+telemetryMetrics.getContentProgress
+Apply
 false
 0
 false
-r._1
+telemetryMetrics.this.getContentProgress(telemetryData)
 
 10
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -177,16 +177,16 @@ r._1
 telemetryMetrics
 Object
 telemetryMetrics
-main
-959
-963
-30
-scala.Tuple2._2
+process
+1083
+1087
+36
+scala.Tuple2._1
 Select
 false
 0
 false
-r._2
+r._1
 
 11
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -194,61 +194,10 @@ r._2
 telemetryMetrics
 Object
 telemetryMetrics
-main
-940
-964
-30
-ProgressData.apply
-Apply
-false
-0
-false
-ProgressData.apply(r._1, r._2)
-
-12
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
-<empty>
-telemetryMetrics
-Object
-telemetryMetrics
-main
-913
-974
-30
-scala.collection.IterableOnceOps.toArray
-ApplyToImplicitArgs
-false
-0
-false
-contentcompleted.map[ProgressData](((r: (String, Int)) => ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData]))
-
-13
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
-<empty>
-telemetryMetrics
-Object
-telemetryMetrics
-main
-1016
-1049
-31
-scala.Option.getOrElse
-Apply
-false
-0
-false
-scala.Option.apply[String](r._1).getOrElse[String]("Unknown")
-
-14
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
-<empty>
-telemetryMetrics
-Object
-telemetryMetrics
-main
-1051
-1055
-31
+process
+1089
+1093
+36
 scala.Tuple2._2
 Select
 false
@@ -256,22 +205,73 @@ false
 false
 r._2
 
+12
+/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
+<empty>
+telemetryMetrics
+Object
+telemetryMetrics
+process
+1070
+1094
+36
+ProgressData.apply
+Apply
+false
+0
+false
+ProgressData.apply(r._1, r._2)
+
+13
+/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
+<empty>
+telemetryMetrics
+Object
+telemetryMetrics
+process
+1043
+1104
+36
+scala.collection.IterableOnceOps.toArray
+ApplyToImplicitArgs
+false
+0
+false
+contentcompleted.map[ProgressData](((r: (String, Int)) => ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData]))
+
+14
+/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
+<empty>
+telemetryMetrics
+Object
+telemetryMetrics
+process
+1146
+1179
+37
+scala.Option.getOrElse
+Apply
+false
+0
+false
+scala.Option.apply[String](r._1).getOrElse[String]("Unknown")
+
 15
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
 <empty>
 telemetryMetrics
 Object
 telemetryMetrics
-main
-1008
-1056
-31
-channel.apply
-Apply
+process
+1181
+1185
+37
+scala.Tuple2._2
+Select
 false
 0
 false
-channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2)
+r._2
 
 16
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -279,16 +279,16 @@ channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._
 telemetryMetrics
 Object
 telemetryMetrics
-main
-983
-1066
-31
-scala.collection.IterableOnceOps.toArray
-ApplyToImplicitArgs
+process
+1138
+1186
+37
+channel.apply
+Apply
 false
 0
 false
-distnctchannel.map[channel](((r: (String, Int)) => channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel]))
+channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2)
 
 17
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -296,16 +296,16 @@ distnctchannel.map[channel](((r: (String, Int)) => channel.apply(scala.Option.ap
 telemetryMetrics
 Object
 telemetryMetrics
-main
-894
-1067
-29
-OutputData.apply
-Apply
+process
+1113
+1196
+37
+scala.collection.IterableOnceOps.toArray
+ApplyToImplicitArgs
 false
 0
 false
-OutputData.apply(contentcompleted.map[ProgressData](((r: (String, Int)) => ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData])), distnctchannel.map[channel](((r: (String, Int)) => channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel])))
+distnctchannel.map[channel](((r: (String, Int)) => channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel]))
 
 18
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -313,16 +313,16 @@ OutputData.apply(contentcompleted.map[ProgressData](((r: (String, Int)) => Progr
 telemetryMetrics
 Object
 telemetryMetrics
-main
-1091
-1101
-32
-telemetryMetrics.outputFile
-Select
+process
+1024
+1197
+35
+OutputData.apply
+Apply
 false
 0
 false
-telemetryMetrics.this.outputFile
+OutputData.apply(contentcompleted.map[ProgressData](((r: (String, Int)) => ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData])), distnctchannel.map[channel](((r: (String, Int)) => channel.apply(scala.Option.apply[String](r._1).getOrElse[String]("Unknown"), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel])))
 
 19
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -330,16 +330,16 @@ telemetryMetrics.this.outputFile
 telemetryMetrics
 Object
 telemetryMetrics
-main
-1073
-1102
-32
-telemetryMetrics.toFile
+readFile
+1484
+1515
+45
+java.io.FileInputStream.<init>
 Apply
 false
 0
 false
-telemetryMetrics.this.toFile(finalData, telemetryMetrics.this.outputFile)
+new java.io.FileInputStream(sourceFile)
 
 20
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -348,15 +348,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1371
-1402
-41
-java.io.FileInputStream.<init>
+1460
+1516
+45
+java.io.BufferedInputStream.<init>
 Apply
 false
 0
 false
-new java.io.FileInputStream(sourceFile)
+new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile))
 
 21
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -365,15 +365,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1347
-1403
-41
-java.io.BufferedInputStream.<init>
+1440
+1517
+45
+java.util.zip.GZIPInputStream.<init>
 Apply
 false
 0
 false
-new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile))
+new java.util.zip.GZIPInputStream(new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile)))
 
 22
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -382,15 +382,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1327
-1404
-41
-java.util.zip.GZIPInputStream.<init>
+1555
+1586
+46
+java.io.InputStreamReader.<init>
 Apply
 false
 0
 false
-new java.util.zip.GZIPInputStream(new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile)))
+new java.io.InputStreamReader(gzipData)
 
 23
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -399,15 +399,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1442
-1473
-42
-java.io.InputStreamReader.<init>
+1536
+1587
+46
+java.io.BufferedReader.<init>
 Apply
 false
 0
 false
-new java.io.InputStreamReader(gzipData)
+new java.io.BufferedReader(new java.io.InputStreamReader(gzipData))
 
 24
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -416,15 +416,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1423
-1474
-42
-java.io.BufferedReader.<init>
+1638
+1655
+48
+java.io.BufferedReader.readLine
 Apply
 false
 0
 false
-new java.io.BufferedReader(new java.io.InputStreamReader(gzipData))
+reader.readLine()
 
 25
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -433,15 +433,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1525
-1542
-44
-java.io.BufferedReader.readLine
+1622
+1656
+48
+telemetryMetrics.lineToTelemetry
 Apply
 false
 0
 false
-reader.readLine()
+telemetryMetrics.this.lineToTelemetry(reader.readLine())
 
 26
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -450,15 +450,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1509
-1543
-44
-telemetryMetrics.lineToTelemetry
+1674
+1683
+49
+java.lang.Object.!=
 Apply
 false
 0
 false
-telemetryMetrics.this.lineToTelemetry(reader.readLine())
+x$1.!=(null)
 
 27
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -467,15 +467,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 readFile
-1561
-1570
-45
-java.lang.Object.!=
-Apply
+1593
+1691
+49
+scala.collection.IterableOnceOps.toList
+Select
 false
 0
 false
-x$1.!=(null)
+scala.`package`.Iterator.continually[TelemetryStructure](telemetryMetrics.this.lineToTelemetry(reader.readLine())).takeWhile(((x$1: TelemetryStructure) => x$1.!=(null))).toList
 
 28
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -483,16 +483,16 @@ x$1.!=(null)
 telemetryMetrics
 Object
 telemetryMetrics
-readFile
-1480
-1578
-45
-scala.collection.IterableOnceOps.toList
-Select
+lineToTelemetry
+1966
+1976
+57
+com.google.gson.Gson.<init>
+Apply
 false
 0
 false
-scala.`package`.Iterator.continually[TelemetryStructure](telemetryMetrics.this.lineToTelemetry(reader.readLine())).takeWhile(((x$1: TelemetryStructure) => x$1.!=(null))).toList
+new com.google.gson.Gson()
 
 29
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -501,15 +501,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 lineToTelemetry
-1855
-1865
-54
-com.google.gson.Gson.<init>
+1982
+2030
+58
+com.google.gson.Gson.fromJson
 Apply
 false
 0
 false
-new com.google.gson.Gson()
+gson.fromJson[TelemetryStructure](line, classOf[TelemetryStructure])
 
 30
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -517,16 +517,16 @@ new com.google.gson.Gson()
 telemetryMetrics
 Object
 telemetryMetrics
-lineToTelemetry
-1871
-1919
-55
-com.google.gson.Gson.fromJson
+countCompleted
+2517
+2542
+70
+scala.Double.==
 Apply
 false
 0
 false
-gson.fromJson[TelemetryStructure](line, classOf[TelemetryStructure])
+x.getProgress.==(progress)
 
 31
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -535,15 +535,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 countCompleted
-2406
-2431
-67
-scala.Double.==
+2499
+2543
+70
+scala.collection.IterableOnceOps.count
 Apply
 false
 0
 false
-x.getProgress.==(progress)
+result.count(((x: TelemetryStructure) => x.getProgress.==(progress)))
 
 32
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -551,16 +551,16 @@ x.getProgress.==(progress)
 telemetryMetrics
 Object
 telemetryMetrics
-countCompleted
-2388
-2432
-67
-scala.collection.IterableOnceOps.count
+getContentProgress
+2837
+2851
+79
+java.lang.Object.==
 Apply
 false
 0
 false
-result.count(((x: TelemetryStructure) => x.getProgress.==(progress)))
+x.eid.==("END")
 
 33
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -569,15 +569,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2726
-2740
-76
-java.lang.Object.==
+2817
+2852
+79
+scala.collection.immutable.List.filter
 Apply
 false
 0
 false
-x.eid.==("END")
+result.filter(((x: TelemetryStructure) => x.eid.==("END")))
 
 34
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -586,15 +586,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2706
-2741
-76
-scala.collection.immutable.List.filter
-Apply
+2901
+2917
+80
+TelemetryStructure.getUserId
+Select
 false
 0
 false
-result.filter(((x: TelemetryStructure) => x.eid.==("END")))
+record.getUserId
 
 35
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -603,15 +603,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2790
-2806
-77
-TelemetryStructure.getUserId
+2938
+2942
+81
+scala.Tuple2._1
 Select
 false
 0
 false
-record.getUserId
+f._1
 
 36
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -620,15 +620,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2827
-2831
-78
-scala.Tuple2._1
+2961
+2965
+81
+scala.Tuple2._2
 Select
 false
 0
 false
-f._1
+f._2
 
 37
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -637,15 +637,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2850
-2854
-78
-scala.Tuple2._2
-Select
+2967
+2970
+81
+<nosymbol>
+Literal
 false
 0
 false
-f._2
+100.0
 
 38
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -654,15 +654,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2856
-2859
-78
-<nosymbol>
-Literal
+2972
+2976
+81
+scala.Tuple2._1
+Select
 false
 0
 false
-100.0
+f._1
 
 39
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -671,15 +671,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2861
-2865
-78
-scala.Tuple2._1
-Select
+2946
+2977
+81
+telemetryMetrics.countCompleted
+Apply
 false
 0
 false
-f._1
+telemetryMetrics.this.countCompleted(f._2, 100.0, f._1)
 
 40
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -688,15 +688,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2835
-2866
-78
-telemetryMetrics.countCompleted
+2938
+2977
+81
+scala.Predef.ArrowAssoc.->
 Apply
 false
 0
 false
-telemetryMetrics.this.countCompleted(f._2, 100.0, f._1)
+scala.Predef.ArrowAssoc[String](f._1).->[Int](telemetryMetrics.this.countCompleted(f._2, 100.0, f._1))
 
 41
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -705,15 +705,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getContentProgress
-2827
-2866
-78
-scala.Predef.ArrowAssoc.->
+2873
+2984
+80
+scala.collection.MapOps.map
 Apply
 false
 0
 false
-scala.Predef.ArrowAssoc[String](f._1).->[Int](telemetryMetrics.this.countCompleted(f._2, 100.0, f._1))
+seperate.groupBy[String](((record: TelemetryStructure) => record.getUserId)).map[String, Int](((f: (String, List[TelemetryStructure])) => scala.Predef.ArrowAssoc[String](f._1).->[Int](telemetryMetrics.this.countCompleted(f._2, 100.0, f._1))))
 
 42
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -721,16 +721,16 @@ scala.Predef.ArrowAssoc[String](f._1).->[Int](telemetryMetrics.this.countComplet
 telemetryMetrics
 Object
 telemetryMetrics
-getContentProgress
-2762
-2873
-77
-scala.collection.MapOps.map
-Apply
+getUniqueChannel
+3272
+3286
+91
+TelemetryStructure.getChannelId
+Select
 false
 0
 false
-seperate.groupBy[String](((record: TelemetryStructure) => record.getUserId)).map[String, Int](((f: (String, List[TelemetryStructure])) => scala.Predef.ArrowAssoc[String](f._1).->[Int](telemetryMetrics.this.countCompleted(f._2, 100.0, f._1))))
+f.getChannelId
 
 43
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -739,15 +739,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getUniqueChannel
-3161
-3175
-88
-TelemetryStructure.getChannelId
+3298
+3302
+91
+scala.Tuple2._1
 Select
 false
 0
 false
-f.getChannelId
+f._1
 
 44
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -756,15 +756,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getUniqueChannel
-3187
-3191
-88
-scala.Tuple2._1
+3304
+3313
+91
+scala.collection.SeqOps.size
 Select
 false
 0
 false
-f._1
+f._2.size
 
 45
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -773,15 +773,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getUniqueChannel
-3193
-3202
-88
-scala.collection.SeqOps.size
-Select
+3297
+3314
+91
+scala.Tuple2.apply
+Apply
 false
 0
 false
-f._2.size
+scala.Tuple2.apply[String, Int](f._1, f._2.size)
 
 46
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -790,15 +790,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 getUniqueChannel
-3186
-3203
-88
-scala.Tuple2.apply
+3252
+3315
+91
+scala.collection.MapOps.map
 Apply
 false
 0
 false
-scala.Tuple2.apply[String, Int](f._1, f._2.size)
+result.groupBy[String](((f: TelemetryStructure) => f.getChannelId)).map[String, Int](((f: (String, List[TelemetryStructure])) => scala.Tuple2.apply[String, Int](f._1, f._2.size)))
 
 47
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -806,16 +806,16 @@ scala.Tuple2.apply[String, Int](f._1, f._2.size)
 telemetryMetrics
 Object
 telemetryMetrics
-getUniqueChannel
-3141
-3204
-88
-scala.collection.MapOps.map
+toFile
+3531
+3548
+102
+com.google.gson.Gson.toJson
 Apply
 false
 0
-false
-result.groupBy[String](((f: TelemetryStructure) => f.getChannelId)).map[String, Int](((f: (String, List[TelemetryStructure])) => scala.Tuple2.apply[String, Int](f._1, f._2.size)))
+true
+telemetryMetrics.this.gson.toJson(data)
 
 48
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -824,15 +824,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3397
-3414
-98
-com.google.gson.Gson.toJson
+3593
+3617
+104
+java.io.File.<init>
 Apply
 false
 0
-false
-telemetryMetrics.this.gson.toJson(data)
+true
+new java.io.File(outputFilePath)
 
 49
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -841,15 +841,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3459
-3483
-100
-java.io.File.<init>
+3570
+3623
+103
+java.io.PrintWriter.<init>
 Apply
 false
 0
-false
-new java.io.File(outputFilePath)
+true
+new java.io.PrintWriter(new java.io.File(outputFilePath))
 
 50
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -858,15 +858,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3436
-3489
-99
-java.io.PrintWriter.<init>
+3632
+3658
+106
+java.io.PrintWriter.write
 Apply
 false
 0
-false
-new java.io.PrintWriter(new java.io.File(outputFilePath))
+true
+fileWriter.write(jsonData)
 
 51
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -875,14 +875,14 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3498
-3524
-102
+3632
+3658
+106
 java.io.PrintWriter.write
 Apply
-false
+true
 0
-false
+true
 fileWriter.write(jsonData)
 
 52
@@ -892,15 +892,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3498
-3524
-102
-java.io.PrintWriter.write
-Block
-true
-0
+3667
+3685
+106
+java.io.PrintWriter.close
+Apply
 false
-fileWriter.write(jsonData)
+0
+true
+fileWriter.close()
 
 53
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryMetrics.scala
@@ -909,14 +909,14 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3533
-3551
-102
+3667
+3685
+106
 java.io.PrintWriter.close
 Apply
-false
+true
 0
-false
+true
 fileWriter.close()
 
 54
@@ -926,15 +926,15 @@ telemetryMetrics
 Object
 telemetryMetrics
 toFile
-3533
-3551
-102
-java.io.PrintWriter.close
-Block
-true
-0
+3693
+3699
+108
+telemetryMetrics.main
+Apply
 false
-fileWriter.close()
+0
+true
+telemetryMetrics.this.main()
 
 55
 /home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
@@ -1196,89 +1196,4 @@ true
 0
 false
 ()
-
-70
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
-<empty>
-TelemetryStructure
-Class
-TelemetryStructure
-getContentId
-573
-609
-27
-scala.Any.isInstanceOf
-TypeApply
-false
-0
-false
-TelemetryStructure.this.`object`.isInstanceOf[ObjectDetails]
-
-71
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
-<empty>
-TelemetryStructure
-Class
-TelemetryStructure
-getContentId
-617
-628
-28
-ObjectDetails.id
-Select
-false
-0
-false
-TelemetryStructure.this.`object`.id
-
-72
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
-<empty>
-TelemetryStructure
-Class
-TelemetryStructure
-getContentId
-617
-628
-28
-ObjectDetails.id
-Block
-true
-0
-false
-TelemetryStructure.this.`object`.id
-
-73
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
-<empty>
-TelemetryStructure
-Class
-TelemetryStructure
-getContentId
-638
-644
-29
-<nosymbol>
-Literal
-false
-0
-false
-"None"
-
-74
-/home/sanctum/IdeaProjects/data-computation12/src/main/scala/TelemetryStructure.scala
-<empty>
-TelemetryStructure
-Class
-TelemetryStructure
-getContentId
-638
-644
-29
-<nosymbol>
-Block
-true
-0
-false
-"None"
 

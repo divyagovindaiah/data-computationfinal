@@ -39,100 +39,104 @@
 </span>15 <span style=''>import com.google.gson.Gson
 </span>16 <span style=''>import com.typesafe.config.{ConfigFactory}
 </span>17 <span style=''>
-</span>18 <span style=''>
-</span>19 <span style=''>object telemetryMetrics extends App {
-</span>20 <span style=''>  val gson = </span><span style='background: #F0ADAD'>new Gson()</span><span style=''>
-</span>21 <span style=''>  val applicationConf = </span><span style='background: #F0ADAD'>ConfigFactory.load(&quot;config.conf&quot;)</span><span style=''>
-</span>22 <span style=''>  val sourceFile = </span><span style='background: #F0ADAD'>applicationConf.getString(&quot;app.sourceFile&quot;)</span><span style=''>
-</span>23 <span style=''>  val outputFile = </span><span style='background: #F0ADAD'>applicationConf.getString(&quot;app.output.totalContentOutFile&quot;)</span><span style=''>
-</span>24 <span style=''>
-</span>25 <span style=''>  def main(): Unit = {
-</span>26 <span style=''>    val telemetryData = </span><span style='background: #F0ADAD'>readFile(sourceFile)</span><span style=''>                                                                          
-</span>27 <span style=''>    val distnctchannel = </span><span style='background: #F0ADAD'>getUniqueChannel(telemetryData)</span><span style=''>
-</span>28 <span style=''>    val contentcompleted = </span><span style='background: #F0ADAD'>getContentProgress(telemetryData)</span><span style=''>
-</span>29 <span style=''>    val finalData = </span><span style='background: #F0ADAD'>OutputData(
-</span>30 <span style=''></span><span style='background: #F0ADAD'>      contentcompleted.map(r =&gt; (ProgressData(r._1, r._2))).toArray,
-</span>31 <span style=''></span><span style='background: #F0ADAD'>      distnctchannel.map(r =&gt; (channel(Option(r._1).getOrElse(&quot;Unknown&quot;), r._2))).toArray)</span><span style=''>
-</span>32 <span style=''>    </span><span style='background: #F0ADAD'>toFile(finalData, outputFile)</span><span style=''>
-</span>33 <span style=''>  }
-</span>34 <span style=''>
-</span>35 <span style=''>
-</span>36 <span style=''>  /**
-</span>37 <span style=''>   * Loading Gzip file convert into buffer reader then in the form of list
-</span>38 <span style=''>   * @return: returns list of strings
-</span>39 <span style=''>   */
-</span>40 <span style=''>  def readFile(sourceFile: String): List[TelemetryStructure] = {
-</span>41 <span style=''>    val gzipData = </span><span style='background: #AEF1AE'>new GZIPInputStream(new BufferedInputStream(new FileInputStream(sourceFile)))</span><span style=''>
-</span>42 <span style=''>    val reader = </span><span style='background: #AEF1AE'>new BufferedReader(new InputStreamReader(gzipData))</span><span style=''>
-</span>43 <span style=''>    </span><span style='background: #AEF1AE'>Iterator.continually(
-</span>44 <span style=''></span><span style='background: #AEF1AE'>      lineToTelemetry(reader.readLine())
-</span>45 <span style=''></span><span style='background: #AEF1AE'>    ).takeWhile(_ != null).toList</span><span style=''>
-</span>46 <span style=''>  }
-</span>47 <span style=''>
-</span>48 <span style=''>  /**
-</span>49 <span style=''>   * Takes in line from stream data in BufferedReader and returns the json parsed class object
-</span>50 <span style=''>   * @param line : Json object line from file stream
-</span>51 <span style=''>   * @return TelemetryData
-</span>52 <span style=''>   */
-</span>53 <span style=''>  def lineToTelemetry(line: String): TelemetryStructure = {
-</span>54 <span style=''>    val gson = </span><span style='background: #AEF1AE'>new Gson()</span><span style=''>
-</span>55 <span style=''>    </span><span style='background: #AEF1AE'>gson.fromJson(line, classOf[TelemetryStructure])</span><span style=''>
-</span>56 <span style=''>  }
-</span>57 <span style=''>
-</span>58 <span style=''>  /**
-</span>59 <span style=''>   * This function can check the progress of content is 100.0 or not
-</span>60 <span style=''>   * Then returns number of content completed by a user
-</span>61 <span style=''>   * @param result   : List of Telemetry Objects
-</span>62 <span style=''>   * @param progress : compare the progress value
-</span>63 <span style=''>   * @param userId   : get the count by specific userId
-</span>64 <span style=''>   * @return: returns count of completed content by a user
-</span>65 <span style=''>   */
-</span>66 <span style=''>  def countCompleted(result: List[TelemetryStructure], progress: Double, userId: String): Int =
-</span>67 <span style=''>    </span><span style='background: #AEF1AE'>result.count(x =&gt; x.getProgress == progress)</span><span style=''>
-</span>68 <span style=''>
-</span>69 <span style=''>  /**
-</span>70 <span style=''>   * it can  group the content those are the progress 100.0
-</span>71 <span style=''>   * @param result : contains list of telemetryObjects
-</span>72 <span style=''>   * @return: count the number of completed contents
-</span>73 <span style=''>   */
-</span>74 <span style=''>
-</span>75 <span style=''>  def getContentProgress(result: List[TelemetryStructure]) = {
-</span>76 <span style=''>    val seperate = </span><span style='background: #AEF1AE'>result.filter (x =&gt; x.eid == &quot;END&quot;)</span><span style=''>
-</span>77 <span style=''>    val finalRes = </span><span style='background: #AEF1AE'>seperate.groupBy(record =&gt; (record.getUserId)).map { f =&gt;
-</span>78 <span style=''></span><span style='background: #AEF1AE'>      f._1 -&gt; countCompleted(f._2, 100, f._1)
-</span>79 <span style=''></span><span style='background: #AEF1AE'>    }</span><span style=''>
-</span>80 <span style=''>finalRes
-</span>81 <span style=''>}
-</span>82 <span style=''>  /**
-</span>83 <span style=''>   * it can group the channalls are distinct
-</span>84 <span style=''>   * @param result : contains List of telemetry objects
-</span>85 <span style=''>   * @return: find out the number of disctinctchannnel
-</span>86 <span style=''>   */
-</span>87 <span style=''>  def getUniqueChannel(result: List[TelemetryStructure]) = {
-</span>88 <span style=''>    val metrics = </span><span style='background: #AEF1AE'>result.groupBy(f =&gt; f.getChannelId).map(f =&gt; (f._1, f._2.size))</span><span style=''>
-</span>89 <span style=''>
-</span>90 <span style=''>metrics
-</span>91 <span style=''>}
-</span>92 <span style=''>  /**
-</span>93 <span style=''>   * it can writes the output to a file
-</span>94 <span style=''>   * @param data : it can takes outputdata
-</span>95 <span style=''>   */
-</span>96 <span style=''>
-</span>97 <span style=''> def toFile(data:OutputData, outputFilePath: String) = {
-</span>98 <span style=''>   val jsonData = </span><span style='background: #F0ADAD'>gson.toJson(data)</span><span style=''>
-</span>99 <span style=''>   val fileWriter = </span><span style='background: #F0ADAD'>new PrintWriter(
-</span>100 <span style=''></span><span style='background: #F0ADAD'>     new File(outputFilePath)
-</span>101 <span style=''></span><span style='background: #F0ADAD'>   )</span><span style=''>
-</span>102 <span style=''>   try </span><span style='background: #F0ADAD'>fileWriter.write(jsonData)</span><span style=''> finally </span><span style='background: #F0ADAD'>fileWriter.close()</span><span style=''>
-</span>103 <span style=''> }
-</span>104 <span style=''>
-</span>105 <span style=''>
-</span>106 <span style=''>
-</span>107 <span style=''>
-</span>108 <span style=''>  }
-</span>109 <span style=''>
+</span>18 <span style=''>object telemetryMetrics extends App {
+</span>19 <span style=''>  val gson = </span><span style='background: #F0ADAD'>new Gson()</span><span style=''>
+</span>20 <span style=''>  // $COVERAGE-OFF$
+</span>21 <span style=''>  def main(): Unit = {
+</span>22 <span style=''>
+</span>23 <span style=''>    val applicationConf = ConfigFactory.load(&quot;application.conf&quot;)
+</span>24 <span style=''>    val sourceFile = applicationConf.getString(&quot;app.sourceFile&quot;)
+</span>25 <span style=''>    val outputFile = applicationConf.getString(&quot;app.output.totalContentOutFile&quot;)
+</span>26 <span style=''>    val data = process(sourceFile,outputFile)
+</span>27 <span style=''>    toFile(data,outputFile)
+</span>28 <span style=''>  }
+</span>29 <span style=''>  // $COVERAGE-ON$
+</span>30 <span style=''>
+</span>31 <span style=''>  def process(sourcefile: String, outputfile: String): OutputData = {
+</span>32 <span style=''>    val telemetryData = </span><span style='background: #AEF1AE'>readFile(sourcefile)</span><span style=''>
+</span>33 <span style=''>    val distnctchannel = </span><span style='background: #AEF1AE'>getUniqueChannel(telemetryData)</span><span style=''>
+</span>34 <span style=''>    val contentcompleted = </span><span style='background: #AEF1AE'>getContentProgress(telemetryData)</span><span style=''>
+</span>35 <span style=''>    val finalData = </span><span style='background: #AEF1AE'>OutputData(
+</span>36 <span style=''></span><span style='background: #AEF1AE'>      contentcompleted.map(r =&gt; (ProgressData(r._1, r._2))).toArray,
+</span>37 <span style=''></span><span style='background: #AEF1AE'>      distnctchannel.map(r =&gt; (channel(Option(r._1).getOrElse(&quot;Unknown&quot;), r._2))).toArray)</span><span style=''>
+</span>38 <span style=''>    return finalData
+</span>39 <span style=''>  }
+</span>40 <span style=''>  /**
+</span>41 <span style=''>   * Loading Gzip file convert into buffer reader then in the form of list
+</span>42 <span style=''>   * @return: returns list of strings
+</span>43 <span style=''>   */
+</span>44 <span style=''>  def readFile(sourceFile: String): List[TelemetryStructure] = {
+</span>45 <span style=''>    val gzipData = </span><span style='background: #AEF1AE'>new GZIPInputStream(new BufferedInputStream(new FileInputStream(sourceFile)))</span><span style=''>
+</span>46 <span style=''>    val reader = </span><span style='background: #AEF1AE'>new BufferedReader(new InputStreamReader(gzipData))</span><span style=''>
+</span>47 <span style=''>    </span><span style='background: #AEF1AE'>Iterator.continually(
+</span>48 <span style=''></span><span style='background: #AEF1AE'>      lineToTelemetry(reader.readLine())
+</span>49 <span style=''></span><span style='background: #AEF1AE'>    ).takeWhile(_ != null).toList</span><span style=''>
+</span>50 <span style=''>  }
+</span>51 <span style=''>  /**
+</span>52 <span style=''>   * Takes in line from stream data in BufferedReader and returns the json parsed class object
+</span>53 <span style=''>   * @param line : Json object line from file stream
+</span>54 <span style=''>   * @return TelemetryData
+</span>55 <span style=''>   */
+</span>56 <span style=''>  def lineToTelemetry(line: String): TelemetryStructure = {
+</span>57 <span style=''>    val gson = </span><span style='background: #AEF1AE'>new Gson()</span><span style=''>
+</span>58 <span style=''>    </span><span style='background: #AEF1AE'>gson.fromJson(line, classOf[TelemetryStructure])</span><span style=''>
+</span>59 <span style=''>  }
+</span>60 <span style=''>
+</span>61 <span style=''>  /**
+</span>62 <span style=''>   * This function can check the progress of content is 100.0 or not
+</span>63 <span style=''>   * Then returns number of content completed by a user
+</span>64 <span style=''>   * @param result   : List of Telemetry Objects
+</span>65 <span style=''>   * @param progress : compare the progress value
+</span>66 <span style=''>   * @param userId   : get the count by specific userId
+</span>67 <span style=''>   * @return: returns count of completed content by a user
+</span>68 <span style=''>   */
+</span>69 <span style=''>  def countCompleted(result: List[TelemetryStructure], progress: Double, userId: String): Int =
+</span>70 <span style=''>    </span><span style='background: #AEF1AE'>result.count(x =&gt; x.getProgress == progress)</span><span style=''>
+</span>71 <span style=''>
+</span>72 <span style=''>  /**
+</span>73 <span style=''>   * it can  group the content those are the progress 100.0
+</span>74 <span style=''>   * @param result : contains list of telemetryObjects
+</span>75 <span style=''>   * @return: count the number of completed contents
+</span>76 <span style=''>   */
+</span>77 <span style=''>
+</span>78 <span style=''>  def getContentProgress(result: List[TelemetryStructure]) = {
+</span>79 <span style=''>    val seperate = </span><span style='background: #AEF1AE'>result.filter (x =&gt; x.eid == &quot;END&quot;)</span><span style=''>
+</span>80 <span style=''>    val finalRes = </span><span style='background: #AEF1AE'>seperate.groupBy(record =&gt; (record.getUserId)).map { f =&gt;
+</span>81 <span style=''></span><span style='background: #AEF1AE'>      f._1 -&gt; countCompleted(f._2, 100, f._1)
+</span>82 <span style=''></span><span style='background: #AEF1AE'>    }</span><span style=''>
+</span>83 <span style=''>finalRes
+</span>84 <span style=''>}
+</span>85 <span style=''>  /**
+</span>86 <span style=''>   * it can group the channalls are distinct
+</span>87 <span style=''>   * @param result : contains List of telemetry objects
+</span>88 <span style=''>   * @return: find out the number of disctinctchannnel
+</span>89 <span style=''>   */
+</span>90 <span style=''>  def getUniqueChannel(result: List[TelemetryStructure]) = {
+</span>91 <span style=''>    val metrics = </span><span style='background: #AEF1AE'>result.groupBy(f =&gt; f.getChannelId).map(f =&gt; (f._1, f._2.size))</span><span style=''>
+</span>92 <span style=''>
+</span>93 <span style=''>metrics
+</span>94 <span style=''>}
+</span>95 <span style=''>  /**
+</span>96 <span style=''>   * it can writes the output to a file
+</span>97 <span style=''>   * @param data : it can takes outputdata
+</span>98 <span style=''>   */
+</span>99 <span style=''>  def toFile(data:OutputData,outputFilePath:String) = {
+</span>100 <span style=''>    // $COVERAGE-OFF$
+</span>101 <span style=''>
+</span>102 <span style=''>    val jsonData = gson.toJson(data)
+</span>103 <span style=''>   val fileWriter = new PrintWriter(
+</span>104 <span style=''>     new File(outputFilePath)
+</span>105 <span style=''>   )
+</span>106 <span style=''>   try fileWriter.write(jsonData) finally fileWriter.close()
+</span>107 <span style=''> }
+</span>108 <span style=''>  main()
+</span>109 <span style=''>  // $COVERAGE-ON$
 </span>110 <span style=''>
 </span>111 <span style=''>
+</span>112 <span style=''>}
+</span>113 <span style=''>
+</span>114 <span style=''>
+</span>115 <span style=''>
 </span></pre>
           </div>
           <div class="tab-pane" id="statementlist">
@@ -147,15 +151,15 @@
         <th>Code</th>
       </tr><tr>
         <td>
-          20
+          19
         </td>
         <td>
           1
         </td>
         <td>
-          393
+          391
           -
-          403
+          401
         </td>
         <td>
           Apply
@@ -171,111 +175,15 @@
         </td>
       </tr><tr>
         <td>
-          21
+          32
         </td>
         <td>
-          2
+          7
         </td>
         <td>
-          429
+          862
           -
-          462
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          com.typesafe.config.ConfigFactory.load
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          com.typesafe.config.ConfigFactory.load(&quot;config.conf&quot;)
-        </td>
-      </tr><tr>
-        <td>
-          22
-        </td>
-        <td>
-          3
-        </td>
-        <td>
-          483
-          -
-          526
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          com.typesafe.config.Config.getString
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.applicationConf.getString(&quot;app.sourceFile&quot;)
-        </td>
-      </tr><tr>
-        <td>
-          23
-        </td>
-        <td>
-          4
-        </td>
-        <td>
-          547
-          -
-          606
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          com.typesafe.config.Config.getString
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.applicationConf.getString(&quot;app.output.totalContentOutFile&quot;)
-        </td>
-      </tr><tr>
-        <td>
-          26
-        </td>
-        <td>
-          5
-        </td>
-        <td>
-          667
-          -
-          677
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          telemetryMetrics.sourceFile
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.sourceFile
-        </td>
-      </tr><tr>
-        <td>
-          26
-        </td>
-        <td>
-          6
-        </td>
-        <td>
-          658
-          -
-          678
+          882
         </td>
         <td>
           Apply
@@ -286,20 +194,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.readFile(telemetryMetrics.this.sourceFile)
+        <td style="background: #AEF1AE">
+          telemetryMetrics.this.readFile(sourcefile)
         </td>
       </tr><tr>
         <td>
-          27
+          33
         </td>
         <td>
-          7
+          8
         </td>
         <td>
-          779
+          909
           -
-          810
+          940
         </td>
         <td>
           Apply
@@ -310,20 +218,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           telemetryMetrics.this.getUniqueChannel(telemetryData)
         </td>
       </tr><tr>
         <td>
-          28
+          34
         </td>
         <td>
-          8
+          9
         </td>
         <td>
-          839
+          969
           -
-          872
+          1002
         </td>
         <td>
           Apply
@@ -334,20 +242,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           telemetryMetrics.this.getContentProgress(telemetryData)
         </td>
       </tr><tr>
         <td>
-          29
+          35
         </td>
         <td>
-          17
+          18
         </td>
         <td>
-          894
+          1024
           -
-          1067
+          1197
         </td>
         <td>
           Apply
@@ -358,44 +266,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           OutputData.apply(contentcompleted.map[ProgressData](((r: (String, Int)) =&gt; ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData])), distnctchannel.map[channel](((r: (String, Int)) =&gt; channel.apply(scala.Option.apply[String](r._1).getOrElse[String](&quot;Unknown&quot;), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel])))
         </td>
       </tr><tr>
         <td>
-          30
+          36
         </td>
         <td>
           11
         </td>
         <td>
-          940
+          1089
           -
-          964
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          ProgressData.apply
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          ProgressData.apply(r._1, r._2)
-        </td>
-      </tr><tr>
-        <td>
-          30
-        </td>
-        <td>
-          10
-        </td>
-        <td>
-          959
-          -
-          963
+          1093
         </td>
         <td>
           Select
@@ -406,20 +290,44 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           r._2
         </td>
       </tr><tr>
         <td>
-          30
+          36
         </td>
         <td>
-          9
+          13
         </td>
         <td>
-          953
+          1043
           -
-          957
+          1104
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.collection.IterableOnceOps.toArray
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          contentcompleted.map[ProgressData](((r: (String, Int)) =&gt; ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData]))
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          1083
+          -
+          1087
         </td>
         <td>
           Select
@@ -430,20 +338,44 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           r._1
         </td>
       </tr><tr>
         <td>
-          30
+          36
         </td>
         <td>
           12
         </td>
         <td>
-          913
+          1070
           -
-          974
+          1094
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          ProgressData.apply
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          ProgressData.apply(r._1, r._2)
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          1113
+          -
+          1196
         </td>
         <td>
           ApplyToImplicitArgs
@@ -454,44 +386,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          contentcompleted.map[ProgressData](((r: (String, Int)) =&gt; ProgressData.apply(r._1, r._2))).toArray[ProgressData]((ClassTag.apply[ProgressData](classOf[ProgressData]): scala.reflect.ClassTag[ProgressData]))
+        <td style="background: #AEF1AE">
+          distnctchannel.map[channel](((r: (String, Int)) =&gt; channel.apply(scala.Option.apply[String](r._1).getOrElse[String](&quot;Unknown&quot;), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel]))
         </td>
       </tr><tr>
         <td>
-          31
+          37
         </td>
         <td>
           14
         </td>
         <td>
-          1051
+          1146
           -
-          1055
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          scala.Tuple2._2
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          r._2
-        </td>
-      </tr><tr>
-        <td>
-          31
-        </td>
-        <td>
-          13
-        </td>
-        <td>
-          1016
-          -
-          1049
+          1179
         </td>
         <td>
           Apply
@@ -502,44 +410,20 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           scala.Option.apply[String](r._1).getOrElse[String](&quot;Unknown&quot;)
         </td>
       </tr><tr>
         <td>
-          31
+          37
         </td>
         <td>
           16
         </td>
         <td>
-          983
+          1138
           -
-          1066
-        </td>
-        <td>
-          ApplyToImplicitArgs
-        </td>
-        <td>
-          scala.collection.IterableOnceOps.toArray
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          distnctchannel.map[channel](((r: (String, Int)) =&gt; channel.apply(scala.Option.apply[String](r._1).getOrElse[String](&quot;Unknown&quot;), r._2))).toArray[channel]((ClassTag.apply[channel](classOf[channel]): scala.reflect.ClassTag[channel]))
-        </td>
-      </tr><tr>
-        <td>
-          31
-        </td>
-        <td>
-          15
-        </td>
-        <td>
-          1008
-          -
-          1056
+          1186
         </td>
         <td>
           Apply
@@ -550,116 +434,44 @@
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
+        <td style="background: #AEF1AE">
           channel.apply(scala.Option.apply[String](r._1).getOrElse[String](&quot;Unknown&quot;), r._2)
         </td>
       </tr><tr>
         <td>
-          32
+          37
         </td>
         <td>
-          19
+          15
         </td>
         <td>
-          1073
+          1181
           -
-          1102
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          telemetryMetrics.toFile
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.toFile(finalData, telemetryMetrics.this.outputFile)
-        </td>
-      </tr><tr>
-        <td>
-          32
-        </td>
-        <td>
-          18
-        </td>
-        <td>
-          1091
-          -
-          1101
+          1185
         </td>
         <td>
           Select
         </td>
         <td>
-          telemetryMetrics.outputFile
+          scala.Tuple2._2
         </td>
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.outputFile
+        <td style="background: #AEF1AE">
+          r._2
         </td>
       </tr><tr>
         <td>
-          41
+          45
         </td>
         <td>
           20
         </td>
         <td>
-          1371
+          1460
           -
-          1402
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          java.io.FileInputStream.&lt;init&gt;
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          new java.io.FileInputStream(sourceFile)
-        </td>
-      </tr><tr>
-        <td>
-          41
-        </td>
-        <td>
-          22
-        </td>
-        <td>
-          1327
-          -
-          1404
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          java.util.zip.GZIPInputStream.&lt;init&gt;
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          new java.util.zip.GZIPInputStream(new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile)))
-        </td>
-      </tr><tr>
-        <td>
-          41
-        </td>
-        <td>
-          21
-        </td>
-        <td>
-          1347
-          -
-          1403
+          1516
         </td>
         <td>
           Apply
@@ -675,39 +487,63 @@
         </td>
       </tr><tr>
         <td>
-          42
+          45
         </td>
         <td>
-          23
+          19
         </td>
         <td>
-          1442
+          1484
           -
-          1473
+          1515
         </td>
         <td>
           Apply
         </td>
         <td>
-          java.io.InputStreamReader.&lt;init&gt;
+          java.io.FileInputStream.&lt;init&gt;
         </td>
         <td>
           
         </td>
         <td style="background: #AEF1AE">
-          new java.io.InputStreamReader(gzipData)
+          new java.io.FileInputStream(sourceFile)
         </td>
       </tr><tr>
         <td>
-          42
+          45
         </td>
         <td>
-          24
+          21
         </td>
         <td>
-          1423
+          1440
           -
-          1474
+          1517
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.util.zip.GZIPInputStream.&lt;init&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          new java.util.zip.GZIPInputStream(new java.io.BufferedInputStream(new java.io.FileInputStream(sourceFile)))
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          1536
+          -
+          1587
         </td>
         <td>
           Apply
@@ -723,15 +559,39 @@
         </td>
       </tr><tr>
         <td>
-          44
+          46
         </td>
         <td>
-          26
+          22
         </td>
         <td>
-          1509
+          1555
           -
-          1543
+          1586
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.io.InputStreamReader.&lt;init&gt;
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          new java.io.InputStreamReader(gzipData)
+        </td>
+      </tr><tr>
+        <td>
+          48
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          1622
+          -
+          1656
         </td>
         <td>
           Apply
@@ -747,15 +607,15 @@
         </td>
       </tr><tr>
         <td>
-          44
+          48
         </td>
         <td>
-          25
+          24
         </td>
         <td>
-          1525
+          1638
           -
-          1542
+          1655
         </td>
         <td>
           Apply
@@ -771,39 +631,15 @@
         </td>
       </tr><tr>
         <td>
-          45
+          49
         </td>
         <td>
-          28
+          26
         </td>
         <td>
-          1480
+          1674
           -
-          1578
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          scala.collection.IterableOnceOps.toList
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          scala.`package`.Iterator.continually[TelemetryStructure](telemetryMetrics.this.lineToTelemetry(reader.readLine())).takeWhile(((x$1: TelemetryStructure) =&gt; x$1.!=(null))).toList
-        </td>
-      </tr><tr>
-        <td>
-          45
-        </td>
-        <td>
-          27
-        </td>
-        <td>
-          1561
-          -
-          1570
+          1683
         </td>
         <td>
           Apply
@@ -819,15 +655,39 @@
         </td>
       </tr><tr>
         <td>
-          54
+          49
         </td>
         <td>
-          29
+          27
         </td>
         <td>
-          1855
+          1593
           -
-          1865
+          1691
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.collection.IterableOnceOps.toList
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Iterator.continually[TelemetryStructure](telemetryMetrics.this.lineToTelemetry(reader.readLine())).takeWhile(((x$1: TelemetryStructure) =&gt; x$1.!=(null))).toList
+        </td>
+      </tr><tr>
+        <td>
+          57
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          1966
+          -
+          1976
         </td>
         <td>
           Apply
@@ -843,15 +703,15 @@
         </td>
       </tr><tr>
         <td>
-          55
+          58
         </td>
         <td>
-          30
+          29
         </td>
         <td>
-          1871
+          1982
           -
-          1919
+          2030
         </td>
         <td>
           Apply
@@ -867,15 +727,15 @@
         </td>
       </tr><tr>
         <td>
-          67
+          70
         </td>
         <td>
-          32
+          31
         </td>
         <td>
-          2388
+          2499
           -
-          2432
+          2543
         </td>
         <td>
           Apply
@@ -891,15 +751,15 @@
         </td>
       </tr><tr>
         <td>
-          67
+          70
         </td>
         <td>
-          31
+          30
         </td>
         <td>
-          2406
+          2517
           -
-          2431
+          2542
         </td>
         <td>
           Apply
@@ -915,39 +775,15 @@
         </td>
       </tr><tr>
         <td>
-          76
+          79
         </td>
         <td>
-          34
+          32
         </td>
         <td>
-          2706
+          2837
           -
-          2741
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          scala.collection.immutable.List.filter
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          result.filter(((x: TelemetryStructure) =&gt; x.eid.==(&quot;END&quot;)))
-        </td>
-      </tr><tr>
-        <td>
-          76
-        </td>
-        <td>
-          33
-        </td>
-        <td>
-          2726
-          -
-          2740
+          2851
         </td>
         <td>
           Apply
@@ -963,39 +799,39 @@
         </td>
       </tr><tr>
         <td>
-          77
+          79
         </td>
         <td>
-          35
+          33
         </td>
         <td>
-          2790
+          2817
           -
-          2806
+          2852
         </td>
         <td>
-          Select
+          Apply
         </td>
         <td>
-          TelemetryStructure.getUserId
+          scala.collection.immutable.List.filter
         </td>
         <td>
           
         </td>
         <td style="background: #AEF1AE">
-          record.getUserId
+          result.filter(((x: TelemetryStructure) =&gt; x.eid.==(&quot;END&quot;)))
         </td>
       </tr><tr>
         <td>
-          77
+          80
         </td>
         <td>
-          42
+          41
         </td>
         <td>
-          2762
-          -
           2873
+          -
+          2984
         </td>
         <td>
           Apply
@@ -1011,15 +847,87 @@
         </td>
       </tr><tr>
         <td>
-          78
+          80
         </td>
         <td>
-          41
+          34
         </td>
         <td>
-          2827
+          2901
           -
-          2866
+          2917
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          TelemetryStructure.getUserId
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          record.getUserId
+        </td>
+      </tr><tr>
+        <td>
+          81
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          2938
+          -
+          2942
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          f._1
+        </td>
+      </tr><tr>
+        <td>
+          81
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          2972
+          -
+          2976
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          f._1
+        </td>
+      </tr><tr>
+        <td>
+          81
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          2938
+          -
+          2977
         </td>
         <td>
           Apply
@@ -1035,15 +943,15 @@
         </td>
       </tr><tr>
         <td>
-          78
+          81
         </td>
         <td>
-          38
+          37
         </td>
         <td>
-          2856
+          2967
           -
-          2859
+          2970
         </td>
         <td>
           Literal
@@ -1059,39 +967,15 @@
         </td>
       </tr><tr>
         <td>
-          78
+          81
         </td>
         <td>
-          40
+          36
         </td>
         <td>
-          2835
+          2961
           -
-          2866
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          telemetryMetrics.countCompleted
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          telemetryMetrics.this.countCompleted(f._2, 100.0, f._1)
-        </td>
-      </tr><tr>
-        <td>
-          78
-        </td>
-        <td>
-          37
-        </td>
-        <td>
-          2850
-          -
-          2854
+          2965
         </td>
         <td>
           Select
@@ -1107,159 +991,39 @@
         </td>
       </tr><tr>
         <td>
-          78
-        </td>
-        <td>
-          36
-        </td>
-        <td>
-          2827
-          -
-          2831
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          scala.Tuple2._1
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          f._1
-        </td>
-      </tr><tr>
-        <td>
-          78
+          81
         </td>
         <td>
           39
         </td>
         <td>
-          2861
+          2946
           -
-          2865
+          2977
         </td>
         <td>
-          Select
+          Apply
         </td>
         <td>
-          scala.Tuple2._1
+          telemetryMetrics.countCompleted
         </td>
         <td>
           
         </td>
         <td style="background: #AEF1AE">
-          f._1
+          telemetryMetrics.this.countCompleted(f._2, 100.0, f._1)
         </td>
       </tr><tr>
         <td>
-          88
+          91
         </td>
         <td>
           44
         </td>
         <td>
-          3187
+          3304
           -
-          3191
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          scala.Tuple2._1
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          f._1
-        </td>
-      </tr><tr>
-        <td>
-          88
-        </td>
-        <td>
-          47
-        </td>
-        <td>
-          3141
-          -
-          3204
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          scala.collection.MapOps.map
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          result.groupBy[String](((f: TelemetryStructure) =&gt; f.getChannelId)).map[String, Int](((f: (String, List[TelemetryStructure])) =&gt; scala.Tuple2.apply[String, Int](f._1, f._2.size)))
-        </td>
-      </tr><tr>
-        <td>
-          88
-        </td>
-        <td>
-          46
-        </td>
-        <td>
-          3186
-          -
-          3203
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          scala.Tuple2.apply
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          scala.Tuple2.apply[String, Int](f._1, f._2.size)
-        </td>
-      </tr><tr>
-        <td>
-          88
-        </td>
-        <td>
-          43
-        </td>
-        <td>
-          3161
-          -
-          3175
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          TelemetryStructure.getChannelId
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #AEF1AE">
-          f.getChannelId
-        </td>
-      </tr><tr>
-        <td>
-          88
-        </td>
-        <td>
-          45
-        </td>
-        <td>
-          3193
-          -
-          3202
+          3313
         </td>
         <td>
           Select
@@ -1275,171 +1039,99 @@
         </td>
       </tr><tr>
         <td>
-          98
+          91
         </td>
         <td>
-          48
+          46
         </td>
         <td>
-          3397
+          3252
           -
-          3414
+          3315
         </td>
         <td>
           Apply
         </td>
         <td>
-          com.google.gson.Gson.toJson
+          scala.collection.MapOps.map
         </td>
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          telemetryMetrics.this.gson.toJson(data)
+        <td style="background: #AEF1AE">
+          result.groupBy[String](((f: TelemetryStructure) =&gt; f.getChannelId)).map[String, Int](((f: (String, List[TelemetryStructure])) =&gt; scala.Tuple2.apply[String, Int](f._1, f._2.size)))
         </td>
       </tr><tr>
         <td>
-          99
+          91
         </td>
         <td>
-          50
+          43
         </td>
         <td>
-          3436
+          3298
           -
-          3489
+          3302
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          scala.Tuple2._1
+        </td>
+        <td>
+          
+        </td>
+        <td style="background: #AEF1AE">
+          f._1
+        </td>
+      </tr><tr>
+        <td>
+          91
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          3297
+          -
+          3314
         </td>
         <td>
           Apply
         </td>
         <td>
-          java.io.PrintWriter.&lt;init&gt;
+          scala.Tuple2.apply
         </td>
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          new java.io.PrintWriter(new java.io.File(outputFilePath))
+        <td style="background: #AEF1AE">
+          scala.Tuple2.apply[String, Int](f._1, f._2.size)
         </td>
       </tr><tr>
         <td>
-          100
+          91
         </td>
         <td>
-          49
+          42
         </td>
         <td>
-          3459
+          3272
           -
-          3483
+          3286
         </td>
         <td>
-          Apply
+          Select
         </td>
         <td>
-          java.io.File.&lt;init&gt;
+          TelemetryStructure.getChannelId
         </td>
         <td>
           
         </td>
-        <td style="background: #F0ADAD">
-          new java.io.File(outputFilePath)
-        </td>
-      </tr><tr>
-        <td>
-          102
-        </td>
-        <td>
-          53
-        </td>
-        <td>
-          3533
-          -
-          3551
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          java.io.PrintWriter.close
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          fileWriter.close()
-        </td>
-      </tr><tr>
-        <td>
-          102
-        </td>
-        <td>
-          52
-        </td>
-        <td>
-          3498
-          -
-          3524
-        </td>
-        <td>
-          Block
-        </td>
-        <td>
-          java.io.PrintWriter.write
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          fileWriter.write(jsonData)
-        </td>
-      </tr><tr>
-        <td>
-          102
-        </td>
-        <td>
-          54
-        </td>
-        <td>
-          3533
-          -
-          3551
-        </td>
-        <td>
-          Block
-        </td>
-        <td>
-          java.io.PrintWriter.close
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          fileWriter.close()
-        </td>
-      </tr><tr>
-        <td>
-          102
-        </td>
-        <td>
-          51
-        </td>
-        <td>
-          3498
-          -
-          3524
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          java.io.PrintWriter.write
-        </td>
-        <td>
-          
-        </td>
-        <td style="background: #F0ADAD">
-          fileWriter.write(jsonData)
+        <td style="background: #AEF1AE">
+          f.getChannelId
         </td>
       </tr>
     </table>

@@ -15,24 +15,28 @@ import java.util.zip.GZIPInputStream
 import com.google.gson.Gson
 import com.typesafe.config.{ConfigFactory}
 
-
 object telemetryMetrics extends App {
   val gson = new Gson()
-  val applicationConf = ConfigFactory.load("config.conf")
-  val sourceFile = applicationConf.getString("app.sourceFile")
-  val outputFile = applicationConf.getString("app.output.totalContentOutFile")
-
+  // $COVERAGE-OFF$
   def main(): Unit = {
-    val telemetryData = readFile(sourceFile)                                                                          
+
+    val applicationConf = ConfigFactory.load("application.conf")
+    val sourceFile = applicationConf.getString("app.sourceFile")
+    val outputFile = applicationConf.getString("app.output.totalContentOutFile")
+    val data = process(sourceFile,outputFile)
+    toFile(data,outputFile)
+  }
+  // $COVERAGE-ON$
+
+  def process(sourcefile: String, outputfile: String): OutputData = {
+    val telemetryData = readFile(sourcefile)
     val distnctchannel = getUniqueChannel(telemetryData)
     val contentcompleted = getContentProgress(telemetryData)
     val finalData = OutputData(
       contentcompleted.map(r => (ProgressData(r._1, r._2))).toArray,
       distnctchannel.map(r => (channel(Option(r._1).getOrElse("Unknown"), r._2))).toArray)
-    toFile(finalData, outputFile)
+    return finalData
   }
-
-
   /**
    * Loading Gzip file convert into buffer reader then in the form of list
    * @return: returns list of strings
@@ -44,7 +48,6 @@ object telemetryMetrics extends App {
       lineToTelemetry(reader.readLine())
     ).takeWhile(_ != null).toList
   }
-
   /**
    * Takes in line from stream data in BufferedReader and returns the json parsed class object
    * @param line : Json object line from file stream
@@ -93,19 +96,20 @@ metrics
    * it can writes the output to a file
    * @param data : it can takes outputdata
    */
+  def toFile(data:OutputData,outputFilePath:String) = {
+    // $COVERAGE-OFF$
 
- def toFile(data:OutputData, outputFilePath: String) = {
-   val jsonData = gson.toJson(data)
-   val fileWriter = new PrintWriter(
+    val jsonData = gson.toJson(data)
+    val fileWriter = new PrintWriter(
      new File(outputFilePath)
    )
    try fileWriter.write(jsonData) finally fileWriter.close()
  }
+  main()
+  // $COVERAGE-ON$
 
-main()
 
-
-  }
+}
 
 
 

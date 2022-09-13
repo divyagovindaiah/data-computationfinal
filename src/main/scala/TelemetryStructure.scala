@@ -22,14 +22,7 @@ case class TelemetryStructure(
     }
     c
   }
-
-  def getContentId: String = {
-    if (`object`.isInstanceOf[ObjectDetails])
-      `object`.id
-    else "None"
-  }
 }
-
 case class ContextDetails(
   sid: String,
   did: String,
