@@ -4,9 +4,9 @@ import org.apache.spark.sql._
 import org.apache.spark.sql.functions.{col, collect_list, expr, map_from_entries, struct}
 
 
-//case class TelemetryStructure(fields: Array[Telemetry]) {
+case class TelemetryStructure(fields: Array[Telemetry]) {
 
-//}
+}
 
 case class Telemetry(
                         eid: String,
